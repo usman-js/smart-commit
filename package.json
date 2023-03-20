@@ -1,0 +1,43 @@
+{
+  "name": "@usman_khan/smartcommit",
+  "private":"false",
+  "licenses": "MIT",
+  "version": "1.0.0",
+  "description": "SmartCommit uses AI or other intelligent methods to optimize the commit process, which could be appealing to developers who want to improve their efficiency.",
+  "main": "stc/index.js",
+  "scripts": {
+    "build": "tsc "
+  },
+  "bin": {
+    "smart-commit": "./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/usman-js/smart-commit"
+  },
+  "author": "Muhammad Usman Khan",
+  "license": "MIT",
+  "keywords": [
+    "Git",
+    "Commit",
+    "Smart Commit",
+    "AI Commit",
+    "AI"
+  ],
+  "dependencies": {
+    "inquirer": "^8.2.0",
+    "openai": "^3.1.0",
+    "ora": "^5.4.0",
+    "simple-git": "^3.17.0",
+    "ansi-regex": "^5.0.0",
+    "chalk": "^4.1.2",
+    "commander": "^10.0.0",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@types/ansi-regex": "^5.0.0",
+    "@types/inquirer": "^8.2.0",
+    "@types/node": "^18.15.3",
+    "ts-node": "^10.9.1"
+  }
+}
