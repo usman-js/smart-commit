@@ -1,9 +1,9 @@
 {
-  "name": "smart-ai-commit",
+  "name": "@usman_khan/smart_commit",
   "licenses": "MIT",
   "version": "1.0.0",
   "description": "SmartCommit uses AI or other intelligent methods to optimize the commit process, which could be appealing to developers who want to improve their efficiency.",
-  "main": "stc/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "tsc "
   },
