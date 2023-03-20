@@ -1,5 +1,5 @@
 {
-  "name": "smart-commit",
+  "name": "smart-ai-commit",
   "licenses": "MIT",
   "version": "1.0.0",
   "description": "SmartCommit uses AI or other intelligent methods to optimize the commit process, which could be appealing to developers who want to improve their efficiency.",
@@ -8,7 +8,7 @@
     "build": "tsc "
   },
   "bin": {
-    "smart-commit": "./dist/index.js"
+    "smart-ai-commit": "./dist/index.js"
   },
   "repository": {
     "type": "git",
