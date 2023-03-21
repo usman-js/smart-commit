@@ -1,21 +1,21 @@
-import { AI_MODEL, MODEL } from "../constants/openai.constant";
-import { Configuration, OpenAIApi } from "openai";
-import chalk from "chalk";
-import ansiRegex from "ansi-regex";
-import ora from 'ora';
+const { MODEL } = require("../constants/openai.constant");
+const { Configuration, OpenAIApi } = require("openai");
+const chalk = require("chalk");
+const ansiRegex = require("ansi-regex");
+const ora = require("ora");
 
-export const generateCommitMessages = async ({
+/**
+ * @description call openai and get the ai commit message
+ * @param {*} param0 
+ * @returns 
+ */
+const generateCommitMessages = async ({
   apiKey,
   prompt,
   model = MODEL,
-}: {
-  apiKey: string;
-  prompt: string;
-  model?: AI_MODEL;
 }) => {
   try {
-   
-    const spinner = ora('Generating ...');
+    const spinner = ora("Generating ...");
     spinner.start();
 
     const sanitizedApiKey = apiKey.replace(ansiRegex(), "");
@@ -31,20 +31,20 @@ export const generateCommitMessages = async ({
       max_tokens: 2048,
     });
     spinner.succeed();
-   return completion.data.choices[0].text!.trim().split('\n');
-  } catch (error: any) {
+    return completion.data.choices[0].text.trim().split("\n");
+  } catch (error) {
     if (error.response) {
-      console.log(error.response);
       console.log(
         chalk.redBright.bold(
           `ERROR:[OPEN_AI] => status: ${error.response.status} data: ${error.response.data}`
         )
       );
     } else {
-      console.log(error.message);
       console.log(
         chalk.redBright.bold(`ERROR:[OPEN_AI] => status: ${error.message}`)
       );
     }
   }
 };
+
+module.exports ={generateCommitMessages}

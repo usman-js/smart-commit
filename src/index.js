@@ -1,12 +1,12 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 
-import { Command } from "commander";
-import { getOpenAIApiKey, setOpenAIApiKey } from "./lib/config.lib";
-import inquirer from "inquirer";
-import chalk from "chalk";
-import { getPromptMessage } from "./lib/prompt.lib";
-import { generateCommitMessages } from "./lib/commit-messages.lib";
-import simpleGit, { SimpleGit } from "simple-git";
+const { Command } = require("commander");
+const { getOpenAIApiKey, setOpenAIApiKey } = require("./lib/config.lib");
+const inquirer = require("inquirer");
+const chalk = require("chalk");
+const { getPromptMessage } = require("./lib/prompt.lib");
+const { generateCommitMessages } = require("./lib/commit-messages.lib");
+const simpleGit = require("simple-git");
 
 (async () => {
   const program = new Command();
@@ -45,18 +45,19 @@ import simpleGit, { SimpleGit } from "simple-git";
   }
   const prompt = await getPromptMessage();
   const aiCommits = await generateCommitMessages({
-    apiKey: apiKey!,
+    apiKey: apiKey,
     prompt: prompt.trim().replace(/\"/g, "'"),
   });
-  
+
   const commit = await inquirer.prompt({
     name: "commitMessage",
     type: "list",
     choices: aiCommits,
-    message:
-      "Pick a commit message to use:",
+    message: "Pick a commit message to use:",
   });
-  const git: SimpleGit = simpleGit();
+  const git = simpleGit();
   await git.commit(commit.commitMessage);
-  chalk.greenBright.bold(`Commit successful with message: ${commit.commitMessage}`) 
+  chalk.greenBright.bold(
+    `Commit successful with message: ${commit.commitMessage}`
+  );
 })();

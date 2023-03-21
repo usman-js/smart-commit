@@ -1,6 +1,6 @@
-import chalk from "chalk";
-import fs from "fs";
-import os from "os";
+const chalk = require("chalk");
+const fs = require("fs");
+const os = require("os");
 
 /**
  * @description write data on specific file path
@@ -8,7 +8,7 @@ import os from "os";
  * @param writeData
  * @returns Promise<boolean>
  */
-export const writeFile = async (filename: string, writeData: any) => {
+const writeFile = async (filename, writeData) => {
   try {
     await fs.promises.writeFile(
       filename,
@@ -26,7 +26,7 @@ export const writeFile = async (filename: string, writeData: any) => {
  * @param filePath
  * @returns Promise<any>
  */
-export const readFile = async (filePath: string) => {
+const readFile = async (filePath) => {
   try {
     const data = await fs.promises.readFile(filePath, "utf8");
     return JSON.parse(data);
@@ -40,7 +40,7 @@ export const readFile = async (filePath: string) => {
  * @param filePath
  * @returns boolean
  */
-export const isFileExist = (filePath: string) => {
+const isFileExist = (filePath) => {
   return fs.existsSync(filePath);
 };
 
@@ -48,7 +48,7 @@ export const isFileExist = (filePath: string) => {
  * @description get home directory
  * @returns string
  */
-export const getHomeDir = () => {
+const getHomeDir = () => {
   const homeDir = os.homedir();
   if (!homeDir) {
     console.log(chalk.red.bold("Please provide open api key"));
@@ -57,3 +57,10 @@ export const getHomeDir = () => {
 
   return homeDir;
 };
+
+module.exports = {
+  writeFile,
+  readFile,
+  isFileExist,
+  getHomeDir
+}

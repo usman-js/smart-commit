@@ -1,12 +1,12 @@
-import chalk from "chalk";
-import { API_KEY, FILE_PATH } from "../constants/config.constant";
-import { writeFile, readFile, getHomeDir } from "../utils/file.util";
+const chalk = require("chalk");
+const { API_KEY, FILE_PATH } = require("../constants/config.constant");
+const { writeFile, readFile, getHomeDir } = require("../utils/file.util");
 
 /**
  * @description set openai api key in home directory
  * @param apiKey
  */
-export const setOpenAIApiKey = async (apiKey: string) => {
+const setOpenAIApiKey = async (apiKey) => {
   if (!apiKey) {
     console.log(
       chalk.red.bold("Please provide open api key by using -k option.")
@@ -22,8 +22,10 @@ export const setOpenAIApiKey = async (apiKey: string) => {
  * @description get openai key from home directory
  * @returns string | boolean
  */
-export const getOpenAIApiKey = async () => {
+const getOpenAIApiKey = async () => {
   const key = await readFile(`${getHomeDir()}/${FILE_PATH}`);
 
   return key ? chalk.greenBright.bold(key[API_KEY]) : undefined;
 };
+
+module.exports = {setOpenAIApiKey,getOpenAIApiKey}

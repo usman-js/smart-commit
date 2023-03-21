@@ -1,6 +1,4 @@
 node_modules
-*.ts
-/src
 /node_modules
 /.github/
 /.npmignore
