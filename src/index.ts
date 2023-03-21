@@ -57,6 +57,6 @@ import simpleGit, { SimpleGit } from "simple-git";
       "Pick a commit message to use:",
   });
   const git: SimpleGit = simpleGit();
-  git.commit(commit.commitMessage);
+  await git.commit(commit.commitMessage);
   chalk.greenBright.bold(`Commit successful with message: ${commit.commitMessage}`) 
 })();
