@@ -1,14 +1,14 @@
 {
   "name": "@usman_khan/smart-commit",
   "licenses": "MIT",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "SmartCommit uses AI or other intelligent methods to optimize the commit process, which could be appealing to developers who want to improve their efficiency.",
   "main": "./dist/index.js",
   "scripts": {
     "start": "chmod +x ./src/index.js && ./src/index.js "
   },
   "bin": {
-    "smart-commit": "chmod +x ./src/index.js && ./src/index.js"
+    "smart-commit": "chmod +x ./src/index.js && ./src/utils/directory-path.utils.js && ./src/index.js"
   },
   "repository": {
     "type": "git",
